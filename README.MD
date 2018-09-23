@@ -8,15 +8,19 @@ Use JVM to start the program with a class "ManualRingBuffTest" like
 
 Use commands "push", "pop", "exit", to push elements, pop elements, exit the program respectively like
 
-`>> push
-Input integer elements: 31 1 2 3`
+```
+>> push
+Input integer elements: 31 1 2 3
+```
 
 Instead a number of elements after the "pop" command you can use the "all" command
 to pop all elements like
 
-`>> pop
+```
+>> pop
 The count: all
-1 2 3`
+1 2 3
+```
 
 ## Authors
 **Oleg T**
