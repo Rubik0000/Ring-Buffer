@@ -5,6 +5,7 @@ public class TestIntCliInterface {
   
   private static final String PUSH = "push";
   private static final String POP = "pop";
+  private static final String PEEK = "peek";
   private static final String EXIT = "exit";
   private static final String ALL = "all";
   private static final String CAP = "cap";
@@ -55,11 +56,28 @@ public class TestIntCliInterface {
             _scan.nextLine();
           }
           break;
+
+        case PEEK:
+          try {
+            System.out.println(_buf.peek());
+          }
+          catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            _scan.nextLine();
+          }
+          break;  
           
         case CAP:
           System.out.println(_buf.capacity());
           break;
-          
+
+        case (PEEK + " " + ALL):
+          for (var el : _buf) {
+            System.out.print(el.toString() + " ");
+          }
+          System.out.println();  
+          break;
+
         default:
           System.out.println("\nUnknown command");
           break;

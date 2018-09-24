@@ -6,8 +6,8 @@ Use JVM to start the program with a class "ManualRingBuffTest" like
 
 `java ManualRingBuffTest`
 
-Use commands "push", "pop", "exit", to push elements, pop elements, exit the program respectively like
-
+Use commands "push", "pop", "peek", "exit", to push elements, get elements and delete them, 
+get an element and not to delete it, exit the program respectively like
 ```
 >> push
 Input integer elements: 31 1 2 3

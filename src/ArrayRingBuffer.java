@@ -1,5 +1,6 @@
 
 import java.lang.reflect.Array;
+import java.util.Iterator;
 
 /**
  * Implements a ring buffer on array base
@@ -71,6 +72,14 @@ public class ArrayRingBuffer<T> implements IRingBuffer<T> {
     return el;
   }
 
+  @Override
+  public T peek() throws EmptyRingBufferException {
+    if (_count == 0) {
+      throw new EmptyRingBufferException("The buffer is empty");   
+    }
+    return _buffer[_readInd];
+  }
+
   @SuppressWarnings("unchecked")
   @Override
   public void push(T elem) {
@@ -100,6 +109,36 @@ public class ArrayRingBuffer<T> implements IRingBuffer<T> {
   @Override
   public boolean isEmpty() {
     return _count == 0;
+  }
+
+  @Override
+  public Iterator<T> iterator() {
+    // creating anon class
+    return new Iterator<T>() {
+      /** start index */  
+      private int i = _readInd;
+
+      /** count of elements */
+      private int step = 0;
+
+      @Override
+      public T next() {
+        T el = _buffer[i];
+        i = shiftIndex(i);
+        ++step;
+        return el;
+      }
+
+      @Override
+      public boolean hasNext() {
+        return step != _count;
+      }
+      
+      @Override
+      public void remove() {
+
+      }
+    };
   }
 
 }
